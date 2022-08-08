@@ -14,7 +14,7 @@ public class ItemStore {
   List<Item> items;
 
   public ItemStore() {
-    items = new ArrayList<Item>();
+    items = new ArrayList<>();
 
     items.add(item1);
     items.add(item2);
@@ -22,7 +22,7 @@ public class ItemStore {
     items.add(item4);
   }
 
-  public List readAllItems() {
+  public List<Item> readAllItems() {
     return items;
   }
 
