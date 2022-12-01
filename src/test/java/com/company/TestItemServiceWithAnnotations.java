@@ -18,7 +18,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ItemServiceTestWithAnnotations {
+public class TestItemServiceWithAnnotations {
 
   @Mock private ItemStore itemStore;
 

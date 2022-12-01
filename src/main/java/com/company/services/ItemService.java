@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class ItemService {
 
-  private ItemStore itemStore;
+  private final ItemStore itemStore;
 
   public ItemService(ItemStore itemStore) {
     this.itemStore = itemStore;
@@ -29,8 +29,12 @@ public class ItemService {
   }
 
   public String getItemNameUpperCase(long itemId) {
-    Item item = itemStore.findById(itemId);
+    try {
+      Item item = itemStore.findById(itemId);
 
-    return StringUtils.upperCase(item.getName());
+      return StringUtils.upperCase(item.getName());
+    } catch (Exception e) {
+      return null;
+    }
   }
 }
