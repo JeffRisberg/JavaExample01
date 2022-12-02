@@ -29,12 +29,8 @@ public class ItemService {
   }
 
   public String getItemNameUpperCase(long itemId) {
-    try {
-      Item item = itemStore.findById(itemId);
+    Item item = itemStore.findById(itemId);
 
-      return StringUtils.upperCase(item.getName());
-    } catch (Exception e) {
-      return null;
-    }
+    return StringUtils.upperCase(item.getName());
   }
 }
