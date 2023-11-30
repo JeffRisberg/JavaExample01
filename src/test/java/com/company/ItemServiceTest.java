@@ -2,7 +2,6 @@ package com.company;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 import com.company.models.Item;
@@ -11,8 +10,7 @@ import com.company.stores.ItemStore;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 @Slf4j
 public class ItemServiceTest {
@@ -53,7 +51,7 @@ public class ItemServiceTest {
     // Verify
     //
     verify(itemStore, times(1)).findById(1L);
-    assertThat(result.getName(), is("Item 1"));
+    assertEquals(result.getName(),"ITEM 1");
   }
 
   @Test
@@ -67,7 +65,7 @@ public class ItemServiceTest {
     // Assert
     //
     verify(itemStore, times(1)).findById(1L);
-    assertThat(result, is("ITEM 1"));
+    assertEquals(result,"ITEM 1");
   }
 
   @Test
