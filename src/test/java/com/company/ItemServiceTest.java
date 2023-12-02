@@ -51,7 +51,7 @@ public class ItemServiceTest {
     // Verify
     //
     verify(itemStore, times(1)).findById(1L);
-    assertEquals(result.getName(),"ITEM 1");
+    assertEquals(result.getName(),"Item 1");
   }
 
   @Test
