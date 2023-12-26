@@ -1,8 +1,6 @@
 package com.company;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 import com.company.models.Item;
@@ -18,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TestItemServiceWithAnnotations {
+public class ItemServiceTestWithAnnotations {
 
   @Mock private ItemStore itemStore;
 
@@ -48,7 +46,7 @@ public class TestItemServiceWithAnnotations {
     // Verify
     //
     verify(itemStore, times(1)).findById(1L);
-    assertThat(result.getName(), is("Item 1"));
+    assertEquals(result.getName(), "Item 1");
   }
 
   @Test
@@ -62,7 +60,7 @@ public class TestItemServiceWithAnnotations {
     // Verify
     //
     verify(itemStore, times(1)).findById(1L);
-    assertThat(result, is("ITEM 1"));
+    assertEquals(result, "ITEM 1");
   }
 
   @Test

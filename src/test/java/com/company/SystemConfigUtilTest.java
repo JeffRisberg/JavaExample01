@@ -2,13 +2,10 @@ package com.company;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
 
 import com.company.config.SystemConfigUtil;
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 public class SystemConfigUtilTest {
 
@@ -26,10 +23,6 @@ public class SystemConfigUtilTest {
 
       scu = SystemConfigUtil.getInstance();
       assertEquals(scu.get("alpha"), 1234.56);
-
-      //Inside scope
-      //assertEquals("bar", ClassWithStaticMethod.getVal());
-      //mockStatic.verify(ClassWithStaticMethod::getVal);
     }
   }
 }

@@ -1,6 +1,5 @@
 package com.company;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -51,7 +50,7 @@ public class ItemServiceTest {
     // Verify
     //
     verify(itemStore, times(1)).findById(1L);
-    assertEquals(result.getName(),"Item 1");
+    assertEquals(result.getName(), "Item 1");
   }
 
   @Test
@@ -65,7 +64,7 @@ public class ItemServiceTest {
     // Assert
     //
     verify(itemStore, times(1)).findById(1L);
-    assertEquals(result,"ITEM 1");
+    assertEquals(result, "ITEM 1");
   }
 
   @Test

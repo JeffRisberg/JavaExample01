@@ -10,3 +10,14 @@ Updated the webhook in September 2020.
 
 Changed to Java17 in November 2023.
 
+## How to run it
+
+'''
+java17 ./gradlew clean run
+'''
+
+## How to test it
+
+'''
+java17 ./gradlew clean test
+'''
