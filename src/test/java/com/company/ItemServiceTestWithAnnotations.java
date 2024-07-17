@@ -8,6 +8,7 @@ import com.company.services.ItemService;
 import com.company.stores.ItemStore;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+@Slf4j
 @RunWith(MockitoJUnitRunner.class)
 public class ItemServiceTestWithAnnotations {
 
@@ -33,6 +35,8 @@ public class ItemServiceTestWithAnnotations {
     when(itemStore.readAllItems()).thenReturn(mockedItems);
 
     when(itemStore.findById(1L)).thenReturn(mockedItem1);
+
+    log.info("Set up Store and Service");
   }
 
   @Test

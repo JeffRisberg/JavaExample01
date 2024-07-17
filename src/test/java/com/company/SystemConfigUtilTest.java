@@ -4,9 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mockStatic;
 
 import com.company.config.SystemConfigUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.mockito.MockedStatic;
 
+@Slf4j
 public class SystemConfigUtilTest {
 
   @Test
@@ -24,5 +26,6 @@ public class SystemConfigUtilTest {
       scu = SystemConfigUtil.getInstance();
       assertEquals(scu.get("alpha"), 1234.56);
     }
+    log.info("Done");
   }
 }
