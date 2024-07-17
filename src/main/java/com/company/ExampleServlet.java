@@ -3,6 +3,8 @@ package com.company;
 import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.util.Enumeration;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -11,36 +13,30 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class ExampleServlet extends HttpServlet implements Filter {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
+    String requestURL = request.getRequestURL().toString();
+
     response
         .setHeader("Location", request.getParameter("target"));
     response
         .getOutputStream()
-        .write(request.getRequestURL().getBytes());
+        .write(requestURL.getBytes());
   }
 
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
   }
 
-  public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
-      throws IOException, ServletException {
-    HttpServletRequest response = (HttpServletResponse) servletResponse;
-
-    response.addHeader("Access-Control-Allow-Origin", "*");
-
-    chain.doFilter(servletRequest, response);
-  }
-
-  public void doFilter2(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
     HttpServletRequest req = (HttpServletRequest) request;
+    HttpServletResponse res = (HttpServletResponse) response;
+
     Enumeration<String> params = req.getParameterNames();
     while(params.hasMoreElements()){
       String name = params.nextElement();
@@ -54,8 +50,8 @@ public class ExampleServlet extends HttpServlet implements Filter {
         log(req.getRemoteAddr() + "::Cookie::{"+cookie.getName()+","+cookie.getValue()+"}");
       }
     }
-    
-    ((HttpRequest) req).addHeader("Access-Control-Allow-Origin", "*");
+
+    res.addHeader("Access-Control-Allow-Origin", "*");
 
     // pass the request along the filter chain
     chain.doFilter(request, response);
