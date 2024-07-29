@@ -1,7 +1,6 @@
 package com.company;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.util.Enumeration;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,9 +12,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 
-@Log4j
+@Slf4j
 public class ExampleServlet extends HttpServlet implements Filter {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
