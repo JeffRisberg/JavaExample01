@@ -1,4 +1,4 @@
-# Example01
+# JavaExample01
 
 Example of using Gradle for Java project.
 
