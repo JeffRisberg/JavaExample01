@@ -20,16 +20,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build with Gradle
+      - name: Build with Gradle and Write Locks
         run: |
-          export GRADLE_USER_HOME=`pwd`/.gradle
           echo "dependencyLocking { lockAllConfigurations() }" >> build.gradle
-          ./gradlew assemble
-          ./gradlew check
           gradle dependencies --write-locks
-          gradle clean compileJava
-      - name: Build Dependency Lock File
-        run: gradle dependencies --write-locks
       - name: Upload Gradle Lock File
         uses: actions/upload-artifact@v3
         with:
