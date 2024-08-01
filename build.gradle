@@ -30,7 +30,7 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.projectlombok:lombok:$projectLombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$projectLombokVersion"
-    
+
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.mockito:mockito-inline:$mockitoInlineVersion"
 }
