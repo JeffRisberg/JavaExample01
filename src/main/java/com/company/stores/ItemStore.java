@@ -3,6 +3,8 @@ package com.company.stores;
 import com.company.models.Item;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import org.mockito.Mockito;
 
 public class ItemStore {
 
@@ -20,6 +22,13 @@ public class ItemStore {
     items.add(item2);
     items.add(item3);
     items.add(item4);
+
+    System.out.println("itemStore created");
+
+    HttpServletRequest request = Mockito.mock(HttpServletRequest.class); // Mockito
+
+    // sql injection
+    String query = "SELECT * FROM accounts WHERE custID='" + request.getParameter("id") + "'";
   }
 
   public List<Item> readAllItems() {
