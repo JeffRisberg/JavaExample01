@@ -21,36 +21,36 @@ public class ExampleServlet extends HttpServlet implements Filter {
 
     String requestURL = request.getRequestURL().toString();
 
-    response
-        .setHeader("Location", request.getParameter("target"));
-    response
-        .getOutputStream()
-        .write(requestURL.getBytes());
+    String target = request.getParameter("target");
+
+    target = target.replace("\n", "");
+    target = target.replace("\r", "");
+
+    // response.setHeader("Location", StringEscapeUtils.escapeHtml4(target));
+    // response.getOutputStream().write(requestURL.getBytes());
   }
 
   @Override
-  public void init(FilterConfig filterConfig) throws ServletException {
-  }
+  public void init(FilterConfig filterConfig) throws ServletException {}
 
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
     HttpServletRequest req = (HttpServletRequest) request;
     HttpServletResponse res = (HttpServletResponse) response;
 
     Enumeration<String> params = req.getParameterNames();
-    while(params.hasMoreElements()){
+    while (params.hasMoreElements()) {
       String name = params.nextElement();
       String value = request.getParameter(name);
-      log(req.getRemoteAddr() + "::Request Params::{"+name+"="+value+"}");
+      log(req.getRemoteAddr() + "::Request Params::{" + name + "=" + value + "}");
     }
 
     Cookie[] cookies = req.getCookies();
-    if(cookies != null){
-      for(Cookie cookie : cookies){
-        log(req.getRemoteAddr() + "::Cookie::{"+cookie.getName()+","+cookie.getValue()+"}");
+    if (cookies != null) {
+      for (Cookie cookie : cookies) {
+        log(req.getRemoteAddr() + "::Cookie::{" + cookie.getName() + "," + cookie.getValue() + "}");
       }
     }
-
-    res.addHeader("Access-Control-Allow-Origin", "*");
 
     // pass the request along the filter chain
     chain.doFilter(request, response);
